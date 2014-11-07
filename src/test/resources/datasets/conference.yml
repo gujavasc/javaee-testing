@@ -1,0 +1,39 @@
+conference:
+  - id: 1
+    version: 0
+    name: "Serra StarTec 2014"
+  - id: 2
+    version: 0
+    name: "JavaOne Conference 2014"
+talk:
+   - id: 1
+     version: 0
+     title: Unit Testing com Java EE
+     slots: 1
+   - id: 2
+     version: 0
+     title:  Supporting OAuth 2 with JAX-RS
+     slots: 5   
+attendee:
+   - id: 1
+     name: Rodrigo
+     age: 32
+   - id: 2
+     name: Fran
+     age: 33
+   - id: 3
+     name: Maria
+     age: 9            
+conference_talk:
+   - conference_id: 1
+     talks_id: 1  
+   - conference_id: 1
+     talks_id: 2    
+talk_attendee:
+   - talk_id: 1
+     attendees_id: 1  
+   - talk_id: 2
+     attendees_id: 2  
+   - talk_id: 2
+     attendees_id: 3         
+    

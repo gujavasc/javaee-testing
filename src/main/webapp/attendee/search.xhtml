@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value="#{attendeeBean.page}"/>
+		<f:event type="preRenderView" listener="#{attendeeBean.paginate}"/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Attendee entities"/>
+
+	<ui:define name="header">
+		Attendee
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Attendee entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="attendeeBeanExampleName" value="Name:"/>
+						<h:panelGroup>
+							<h:inputText id="attendeeBeanExampleName" value="#{attendeeBean.example.name}"/>
+							<h:message for="attendeeBeanExampleName" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="attendeeBeanExampleAge" value="Age:"/>
+						<h:panelGroup>
+							<h:inputText id="attendeeBeanExampleAge" value="#{attendeeBean.example.age}"/>
+							<h:message for="attendeeBeanExampleAge" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action="#{attendeeBean.search}" styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action="#{attendeeBean.create}" styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="attendeeBeanPageItems" styleClass="data-table" value="#{attendeeBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Name"/>
+					</f:facet>
+					<h:link outcome="/attendee/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="itemName" value="#{_item.name}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Age"/>
+					</f:facet>
+					<h:link outcome="/attendee/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="itemAge" value="#{_item.age}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value="#{attendeeBean}"/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>
