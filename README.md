@@ -6,8 +6,9 @@ Unit Testing com Java EE
 http://www.slideshare.net/rcandidosilva/gujavasc-unit-testing-com-java-ee
 
 ### Referências:
-* Arquillian - http://arquillian.org
 * JUnit - http://junit.org
+* Arquillian - http://arquillian.org
 * DBUnit- http://dbunit.sourceforge.net
 * Selenium - http://www.seleniumhq.org
+* Cucumber - http://cukes.info
 
